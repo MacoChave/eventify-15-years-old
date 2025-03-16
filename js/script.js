@@ -31,7 +31,7 @@ familyElement.textContent = `Fam. ${family || 'Doe'}`;
 countsElement.textContent = `Adultos: ${adults || 0}`;
 
 if (childs) {
-  countElement.textContent += `Niños: ${childs}`
+  countsElement.textContent += `Niños: ${childs}`
 }
 
 messageElement.textContent = message || '¡Gracias por acompañarnos!';
