@@ -47,15 +47,15 @@ function updateCountdown() {
         </div>
         <div class="conteo__item">
             <p class="value">${hours}</p>
-            <p class="key">Horas</p>
+            <p class="key">Hrs</p>
         </div>
         <div class="conteo__item">
             <p class="value">${minutes}</p>
-            <p class="key">Minutos</p>
+            <p class="key">Min</p>
         </div>
         <div class="conteo__item">
             <p class="value">${seconds}</p>
-            <p class="key">Segundos</p>
+            <p class="key">Seg</p>
         </div>
     `;
 
