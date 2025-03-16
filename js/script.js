@@ -28,7 +28,10 @@ let childs = params.get('c');
 let message = params.get('m');
 
 familyElement.textContent = `Fam. ${family || 'Doe'}`;
-countsElement.textContent = `Adultos: ${adults || 0} ${
-	childs ? `Niños: ${childs}` : ''
-}`;
+countsElement.textContent = `Adultos: ${adults || 0}`;
+
+if (childs) {
+  countElement.textContent += `Niños: ${childs}`
+}
+
 messageElement.textContent = message || '¡Gracias por acompañarnos!';
