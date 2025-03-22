@@ -43,7 +43,17 @@ countsElement.textContent = `Adultos: ${adults || 0} ${
 messageElement.textContent = message || '¡Gracias por acompañarme!';
 
 // Open the maps app when the address is clicked
-function openMaps(lat, lng) {
+
+const dialog = document.querySelector('#mapDialog');
+const btnCloseDialog = document.querySelector('#closeDialog');
+
+btnCloseDialog.addEventListener('click', (e) => {
+	e.preventDefault();
+	e.stopPropagation();
+	closeDialog();
+});
+
+window.openMaps = function (lat, lng) {
 	const isIOS =
 		/iPad|iPhone|Mac/.test(navigator.userAgent) && !window.MSStream;
 	const isAndroid = /Android/.test(navigator.userAgent);
@@ -52,30 +62,59 @@ function openMaps(lat, lng) {
 	const options = [
 		{
 			name: 'Google Maps',
+			icon: './assets/svg/google-maps.svg',
 			url: `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
 		},
 		{
 			name: 'Apple Maps',
+			icon: './assets/svg/apple-maps.svg',
 			url: `https://maps.apple.com/?q=${lat},${lng}`,
 			onlyIOS: true,
 		},
 		{
 			name: 'Waze',
+			icon: './assets/svg/waze.svg',
 			url: `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`,
 		},
 	];
 
 	let availableOptions = options.filter((opt) => !opt.onlyIOS || isIOS);
 
-	let choice = prompt(
-		'¿Con qué aplicación deseas abrir la ubicación?\n\n' +
-			availableOptions.map((opt, i) => `${i + 1}. ${opt.name}`).join('\n')
-	);
+	// Get map container
+	let mapOptions = document.querySelector('#mapOptions');
+	mapOptions.innerHTML = '';
 
-	if (choice && !isNaN(choice)) {
-		let selectedOption = availableOptions[parseInt(choice) - 1];
-		if (selectedOption) {
-			window.open(selectedOption.url, '_blank');
-		}
-	}
+	// Create buttons for each available option
+	availableOptions.forEach((opt) => {
+		let button = document.createElement('button');
+		let icon = document.createElement('img');
+		icon.src = opt.icon;
+		icon.alt = opt.name;
+
+		button.appendChild(icon);
+		button.className = 'btn__icon';
+		button.addEventListener('click', () => {
+			window.open(opt.url, '_blank');
+			closeDialog();
+		});
+		mapOptions.appendChild(button);
+	});
+
+	dialog.showModal();
+
+	// let choice = prompt(
+	// 	'¿Con qué aplicación deseas abrir la ubicación?\n\n' +
+	// 		availableOptions.map((opt, i) => `${i + 1}. ${opt.name}`).join('\n')
+	// );
+
+	// if (choice && !isNaN(choice)) {
+	// 	let selectedOption = availableOptions[parseInt(choice) - 1];
+	// 	if (selectedOption) {
+	// 		window.open(selectedOption.url, '_blank');
+	// 	}
+	// }
+};
+
+function closeDialog() {
+	dialog.close();
 }

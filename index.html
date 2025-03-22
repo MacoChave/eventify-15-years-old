@@ -137,7 +137,7 @@
             <div class="grid">
                 <div>
                     <p class="heading-3">Lluvia de sobres</p>
-                    <p class="text-2">Agradecemos tu asistencia, pero, si deseas bendecirnos aún más, dejamos sobres en
+                    <p class="text-2">Agradecemos tu asistencia, pero, si deseas bendecirme aún más, dejamos sobres en
                         el evento para tu aporte económico</p>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                 <img src="./assets/fotos/img-00002.jpg" alt="gallery" class="min-img">
                 <img src="./assets/fotos/img-00003.jpg" alt="gallery" class="min-img">
                 <img src="./assets/fotos/img-00006.jpg" alt="gallery" class="min-img">
-                <img src="./assets/fotos/img-00007.jpg" alt="gallery" class="min-img">
+                <img src="./assets/fotos/img-00014.jpeg" alt="gallery" class="min-img">
             </div>
         </section>
     </main>
@@ -190,17 +190,28 @@
         <p>© 2024 Marco Chávez</p>
     </footer>
     <!-- MODAL -->
-    <div id="mapModal" class="modal">
+    <dialog id="mapDialog" class="mapDialog" codedBy="any">
         <div class="modal__content">
-            <h2 class="text-1">Elige una aplicación</h2>
-            <button class="btn__text" onclick="openMapApp()">Cancelar</button>
-            <button class="btn__primary" onclick="openMapApp('google')">Google Maps</button>
-            <button class="btn__primary" onclick="openMapApp('apple')">Apple Maps</button>
-            <button class="btn__primary" onclick="openMapApp('waze')">Waze</button>
+            <header>
+                <h2 class="text-1">Elige una aplicación</h2>
+            </header>
+            <main id="mapOptions">
+                <button class="btn__icon" onclick="openMapApp('google')"><img src="./assets/svg/google-maps.svg"
+                        alt="Google Maps icon"></button>
+                <button class="btn__icon" onclick="openMapApp('apple')"><img src="./assets/svg/apple-maps.svg"
+                        alt="Apple Maps icon"></button>
+                <button class="btn__icon" onclick="openMapApp('waze')"><img src="./assets/svg/waze.svg"
+                        alt="Waze icon"></button>
+            </main>
+            <footer>
+                <form action="mapDialog">
+                    <button id="closeDialog" class="btn__text">Cancelar</button>
+                </form>
+            </footer>
         </div>
-    </div>
-    <script type="text/javascript" src="js/script.js"></script>
+    </dialog>
     <script type="text/javascript" src="js/contador.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>
