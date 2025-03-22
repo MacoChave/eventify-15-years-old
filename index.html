@@ -55,7 +55,7 @@
             <p class="heading-3" id="family"></p>
             <p class="text-1" id="message">Los esperamos en este día especial para nosotros</p>
             <p class="text-1" id="counts"></p>
-            <p class="text-2">Estaremos ansiosos por verte a la hora exacta. Agradecemos tu puntualidad</p>
+            <p class="text-2">Estaré ansiosa por verte a la hora exacta. Agradecemos tu puntualidad</p>
         </section>
         <section>
             <h2 class="heading-2">Agradezco a mis padres</h2>
@@ -78,7 +78,7 @@
                     <img src="./assets/images/vals (1).png" alt="Vals" class="icono">
                     <div>
                         <p class="heading-3">Vals</p>
-                        <p class="text-2">7:05 PM</p>
+                        <p class="text-2">7:15 PM</p>
                     </div>
                 </div>
                 <div class="item">
@@ -88,13 +88,13 @@
                         <p class="text-2">9:45 PM</p>
                     </div>
                 </div>
-                <div class="item">
+                <!-- <div class="item">
                     <img src="./assets/images/bailando.png" alt="Baile" class="icono">
                     <div>
                         <p class="heading-3">Baile</p>
                         <p class="text-2">10:00 PM</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         <section>
@@ -109,8 +109,8 @@
                         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d682.3940800286315!2d-90.50755177589389!3d14.644366757720505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sgt!4v1741977910005!5m2!1ses-419!2sgt"
                         width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <a class="btn__primary" href="https://maps.app.goo.gl/khDqGcVr3f776khp6" target="_blank">Ver
-                        ubicación</a>
+                    <button class="btn__primary" onclick="openMaps(14.644336, -90.507282)">Ver
+                        ubicación</button>
                 </div>
                 <div class="item">
                     <p class="heading-3">Reservación</p>
@@ -120,8 +120,8 @@
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d682.3978718765973!2d-90.50781919764768!3d14.643148318063659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a3aed1a1b287%3A0x2952da1c0e268971!2sMuseo%20de%20La%20Merced!5e0!3m2!1ses-419!2sgt!4v1741977867405!5m2!1ses-419!2sgt"
                         width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <a class="btn__primary" href="https://maps.app.goo.gl/YVMLGbgydbxSamAo6" target="_blank">Ver
-                        ubicación</a>
+                    <button class="btn__primary" onclick="openMaps(14.64308, -90.5077864)">Ver
+                        ubicación</button>
                 </div>
             </div>
         </section>
@@ -182,6 +182,16 @@
     <footer class="footer">
         <p>© 2024 Marco Chávez</p>
     </footer>
+    <!-- MODAL -->
+    <div id="mapModal" class="modal">
+        <div class="modal__content">
+            <h2 class="text-1">Elige una aplicación</h2>
+            <button class="btn__text" onclick="openMapApp()">Cancelar</button>
+            <button class="btn__primary" onclick="openMapApp('google')">Google Maps</button>
+            <button class="btn__primary" onclick="openMapApp('apple')">Apple Maps</button>
+            <button class="btn__primary" onclick="openMapApp('waze')">Waze</button>
+        </div>
+    </div>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/contador.js"></script>
 </body>

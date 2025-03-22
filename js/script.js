@@ -1,3 +1,11 @@
+/**
+ * @file script.js
+ * @description Main script file for the Eventify 15 years old website
+ * @version 21.03.25
+ * @date 2025-03-21
+ * */
+
+// Interaction for the gallery
 let modalElement = document.querySelector('#modal');
 document
 	.querySelector('.grid-gallery')
@@ -17,6 +25,7 @@ document
 		}
 	});
 
+// Load the family name, counts and message from the URL
 let familyElement = document.querySelector('#family');
 let countsElement = document.querySelector('#counts');
 let messageElement = document.querySelector('#message');
@@ -31,4 +40,42 @@ familyElement.textContent = `Fam. ${family || 'Doe'}`;
 countsElement.textContent = `Adultos: ${adults || 0} ${
 	childs ? `Niños: ${childs}` : ''
 }`;
-messageElement.textContent = message || '¡Gracias por acompañarnos!';
+messageElement.textContent = message || '¡Gracias por acompañarme!';
+
+// Open the maps app when the address is clicked
+function openMaps(lat, lng) {
+	const isIOS =
+		/iPad|iPhone|Mac/.test(navigator.userAgent) && !window.MSStream;
+	const isAndroid = /Android/.test(navigator.userAgent);
+
+	// Map apps options
+	const options = [
+		{
+			name: 'Google Maps',
+			url: `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
+		},
+		{
+			name: 'Apple Maps',
+			url: `https://maps.apple.com/?q=${lat},${lng}`,
+			onlyIOS: true,
+		},
+		{
+			name: 'Waze',
+			url: `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`,
+		},
+	];
+
+	let availableOptions = options.filter((opt) => !opt.onlyIOS || isIOS);
+
+	let choice = prompt(
+		'¿Con qué aplicación deseas abrir la ubicación?\n\n' +
+			availableOptions.map((opt, i) => `${i + 1}. ${opt.name}`).join('\n')
+	);
+
+	if (choice && !isNaN(choice)) {
+		let selectedOption = availableOptions[parseInt(choice) - 1];
+		if (selectedOption) {
+			window.open(selectedOption.url, '_blank');
+		}
+	}
+}

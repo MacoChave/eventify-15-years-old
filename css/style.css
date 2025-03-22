@@ -205,23 +205,37 @@ section {
 	font-size: 1.5rem;
 }
 
-.btn__primary {
+[class^='btn'] {
 	font-family: 'Quantico', sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	font-size: 1rem;
 	line-height: 1.2;
-	color: var(--color-white);
-	background: var(--color-primary-600);
 	padding: 1rem 2rem;
-	border: none;
-	border-radius: 0.5rem;
 	cursor: pointer;
 	transition: background 0.3s;
 	text-decoration: none;
+}
+
+.btn__primary {
+	color: var(--color-white);
+	background: var(--color-primary-600);
+	border: none;
+	border-radius: 0.5rem;
 
 	&:hover {
 		background: var(--color-primary-700);
+	}
+}
+
+.btn__text {
+	color: var(--color-primary-600);
+	background: none;
+	border: none;
+	border-radius: 0.5rem;
+
+	&:hover {
+		background: var(--color-primary-200);
 	}
 }
 
@@ -238,6 +252,10 @@ section {
 	img {
 		width: 32px;
 		height: 32px;
+	}
+
+	&:hover {
+		background: var(--color-accent-600);
 	}
 }
 
@@ -392,5 +410,24 @@ section {
 		justify-content: center;
 		align-items: center;
 		gap: 2rem;
+	}
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+
+	.modal__content {
+		background: var(--color-white);
+		padding: 2rem;
+		border-radius: 1rem;
 	}
 }
