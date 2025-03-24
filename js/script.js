@@ -36,7 +36,7 @@ let adults = params.get('a');
 let childs = params.get('c');
 let message = params.get('m');
 
-familyElement.textContent = `Fam. ${family || 'Doe'}`;
+familyElement.textContent = `${family || 'Doe'}`;
 countsElement.textContent = `Adultos: ${adults || 0} ${
 	childs ? `Niños: ${childs}` : ''
 }`;
